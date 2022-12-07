@@ -9,12 +9,12 @@ I've been asked to implement in this project a social media website where the us
 -Live chat<br>
 
 # How to install project
--Extract Folders from github
+-Extract Folders from github<br>
 -Run them using visual studio or other preferable tool
 
 # Stacks
--FrameWork: laravel
--Database: MySQL
--Languages: -Frontend(html,css,js)
+-FrameWork: laravel<br>
+-Database: MySQL<br>
+-Languages: -Frontend(html,css,js)<br>
             -Backend(php)
  
