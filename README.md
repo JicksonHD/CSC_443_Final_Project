@@ -15,9 +15,8 @@ I've been asked to implement in this project a social media website where the us
 # Stacks
 -FrameWork: laravel<br>
 -Database: MySQL<br>
--Languages: 
- <ul>
- <li>Frontend(html,css,js)</li>
- <li>Backend(php)</li>
- </ul>
+-Languages:  <ul>
+             <li>Frontend(html,css,js)</li>
+             <li>Backend(php)</li>
+             </ul>
  
