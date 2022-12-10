@@ -21,3 +21,23 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.font_color_home{
+
+    color: white;
+}
+
+.getStarted_placement{
+
+    align-items: flex-end;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.welcomeText_placement{
+
+    align-items: flex-end;
+    justify-content: end;
+    flex-direction: column;
+
+}
