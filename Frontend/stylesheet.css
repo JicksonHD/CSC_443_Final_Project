@@ -188,6 +188,7 @@ transition: all .2s ease;
   /* Add a color to the active/current link */
   .navbar a.active {
     color: white;
+    background-color: #111827;
   }
 
 
