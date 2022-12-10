@@ -29,7 +29,21 @@
     border-radius: 25px;
   }
   
-  
+  .card_signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 55%;
+    width: 50%;
+    top: 50%;
+    box-shadow: 0 0 3px 0;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    margin: auto;
+    margin-top: 150px;
+    border-radius: 25px;
+  }
   
   
 .background{
@@ -60,6 +74,13 @@
 }
 
 .email_password_login_placement{
+
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.email_password_name_signUp_placement{
 
     align-items: center;
     justify-content: center;
