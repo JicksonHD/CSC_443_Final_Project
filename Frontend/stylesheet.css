@@ -1,0 +1,23 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 400px;
+    top: 50%;
+    box-shadow: 0 0 3px 0;
+    background: inherit;
+    backdrop-filter: blur(100px);
+    margin: 100px;
+    border-radius: 25px;
+  }
+  
+  
+  
+  
+.background{
+
+    background-image: url("./background/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
