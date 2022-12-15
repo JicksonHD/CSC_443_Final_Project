@@ -20,15 +20,32 @@ use App\Http\Controllers\ImageController;
 
 Route::group(["prefix"=>"v0.1"],function(){
     Route::group(["prefix"=>"weshare"],function(){
-        Route::controller(AuthController::class)->group(function(){
-            Route::post("/login", "login");
-            Route::post("/signup", "register");
+        Route::group(["prefix"=>"users"],function(){
+            Route::controller(AuthController::class)->group(function(){
+                Route::post("/login", "login");
+                Route::post("/signup", "register");
+            });
         });
         Route::group(["prefix"=>"images"],function(){
             Route::controller(PostController::class)->group(function(){
                 Route::post("/add", "addImage");
                 Route::post("/delete", "deleteImage");
                 Route::get("/","getImage");
+            });
+        });
+        Route::group(["prefix"=>"likes"],function(){
+            Route::controller(LikeController::class)->group(function(){
+                Route::post("/add", "addLike");
+                Route::post("/delete", "deleteLike");
+                Route::get("/check/{image_id}", "checkLike");
+                Route::get("/{image_id}","getLikes");
+            });
+        });
+        Route::group(["prefix"=>"comments"],function(){
+            Route::controller(CommentController::class)->group(function(){
+                Route::post("/add", "addComment");
+                Route::get("/delete/{comment_id}", "deleteComment");
+                Route::get("/{post_id}","getComments");
             });
         });
     });
