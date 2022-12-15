@@ -48,6 +48,12 @@ Route::group(["prefix"=>"v0.1"],function(){
                 Route::get("/{post_id}","getComments");
             });
         });
+        Route::group(["prefix"=>"hiddenImages"],function(){
+            Route::controller(HiddenImageController::class)->group(function(){
+                Route::post("/hide","hideImage");
+                Route::post("/unhide","unhideImage");
+            });
+        });
     });
 });
 
