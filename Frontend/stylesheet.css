@@ -1,6 +1,7 @@
 .center{
     
     justify-content: center;
+    
 }
 
 
@@ -62,6 +63,7 @@
 .font_color_home{
 
     color: white;
+    
 }
 
 .getStarted_placement{
@@ -91,6 +93,13 @@
     align-items: center;
     justify-content: center;
     justify-content: space-evenly;
+}
+
+.logo_placement{
+
+  margin-left: 45%;
+  margin-top: 15%;
+  
 }
 
 
@@ -193,11 +202,25 @@ transition: all .2s ease;
 
 
   .dark-theme{
-    background-color: rgb(45, 45, 45);
+    background-color: rgb(55, 55, 55);
+  
   }
 
 
 .moon{
 
-  margin-left: 90%;
+  margin-left: 4%;
+  margin-bottom: 5%;
+  
+}
+
+.top-right-features{
+
+  justify-content: space-evenly;
+  padding: 5%;
+}
+
+.stream-logo-placement{
+
+ margin-left: 2%;
 }

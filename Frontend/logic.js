@@ -1,4 +1,3 @@
-
 const moon = document.getElementById("moon");
 
 moon.onclick = function(){
