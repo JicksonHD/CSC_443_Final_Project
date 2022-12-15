@@ -12,11 +12,7 @@
     align-items: flex-end;
     height: 70%;
     top: 50%;
-    box-shadow: 0 0 3px 0;
-    background: inherit;
-    backdrop-filter: blur(100px);
     margin: 100px;
-    border-radius: 25px;
   }
 
 
@@ -55,7 +51,7 @@
   
 .background{
 
-    background-image: url("./background/background.jpg");
+    background-image: url("./background/backgroundV69.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -78,6 +74,7 @@
     align-items: center;
     justify-content: center;
     justify-content: space-evenly;
+    flex-direction: column;
 
 }
 
