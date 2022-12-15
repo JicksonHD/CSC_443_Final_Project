@@ -21,7 +21,8 @@ use App\Http\Controllers\ImageController;
 Route::group(["prefix"=>"v0.1"],function(){
     Route::group(["prefix"=>"weshare"],function(){
         Route::controller(AuthController::class)->group(function(){
-            
+            Route::post("/login", "login");
+            Route::post("/signup", "register");
         });
     });
 });
