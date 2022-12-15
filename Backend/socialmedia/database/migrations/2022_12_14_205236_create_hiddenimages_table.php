@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('hiddenimages', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->user_id_hidding();
+            $table->user_id_hidden_from();
+            $table->image_id();
         });
     }
 
