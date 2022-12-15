@@ -24,6 +24,13 @@ Route::group(["prefix"=>"v0.1"],function(){
             Route::post("/login", "login");
             Route::post("/signup", "register");
         });
+        Route::group(["prefix"=>"images"],function(){
+            Route::controller(PostController::class)->group(function(){
+                Route::post("/add", "addImage");
+                Route::post("/delete", "deleteImage");
+                Route::get("/","getImage");
+            });
+        });
     });
 });
 
