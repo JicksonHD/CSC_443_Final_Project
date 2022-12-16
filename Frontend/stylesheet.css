@@ -60,10 +60,46 @@
     background: transparent;
     backdrop-filter: blur(4px);
     margin: auto;
-    margin-top: 150px;
+    margin-top: 50px;
     border-radius: 25px;
+    
   }
   
+  .card_stream {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 60%;
+    width: 30%;
+    top: 50%;
+    box-shadow: 0 0 3px 0;
+    background: transparent;
+    backdrop-filter: blur(4px);
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 25px;
+  }
+
+  .image-card {
+    display: inline-block;
+    box-shadow: 0 0 3px 0;
+    background: inherit;
+    backdrop-filter: blur(5px);
+    margin: 20px;
+    border-radius: 25px;
+    margin-bottom: 50px;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-row {
+    display: flex;
+    overflow: hidden;
+  }
   
 .background{
 
@@ -247,4 +283,7 @@ transition: all .2s ease;
  margin-left: 2%;
 }
 
+.username-placement{
 
+  justify-content: left;
+}
