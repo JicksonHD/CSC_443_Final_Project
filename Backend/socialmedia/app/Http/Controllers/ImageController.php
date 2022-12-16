@@ -63,4 +63,44 @@ class ImageController extends Controller
             ], 400);
         }
     }
+    function deletePost(Request $request){
+        $validate = Validator::make($request->all(), [
+            'user_id' => 'required|integer',
+            'image_id' => 'required|string',
+        ]);
+        if($validate->fails()){
+            return response()->json([
+                "status" => "error",
+                "results" => "Some fields are empty"
+            ], 400);
+        }
+        // Check if image exist
+        $image = Image::find($request->image_id);
+        if(!$image){
+            return response()->json([
+                "status" => "error",
+                "results" => "Post does not exist"
+            ], 400);
+        }
+        // Check if user is allowed to delete it
+        $image_allow = Image::where("user_id", $request->user_id)
+                    ->where("id", $request->image_id)
+                    ->get();
+        
+        if(count($image_allow) == 0){
+            return response()->json([
+            "status" => "error",
+            "results" => "This user is not allowed to delete this image"
+            ], 401);
+        }
+        if(Storage::delete("app/public/posts/".$image_allow[0]->url)){
+            if($image_allow[0]->delete()){
+                return response()->json([
+                    'status' => 'success',
+                    'results' => 'Post Deleted',
+                    'post' => $image_allow
+                ], 200);
+            };
+        }
+    }
 }
