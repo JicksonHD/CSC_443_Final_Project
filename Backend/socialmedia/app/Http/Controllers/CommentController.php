@@ -82,7 +82,7 @@ class CommentController extends Controller
                 "results" => "Post does not exist"
             ], 404);
         }
-        //Getting username with content of each like
+        //Getting username with content of each comment
         $comments = DB::table('users')
             ->join('comments', 'users.id', '=', 'comments.user_id')
             ->where('comments.image_id', '=', $image_id)
@@ -98,8 +98,8 @@ class CommentController extends Controller
         }
         return response()->json([
             'status' => 'success',
-            'results' => 'Likes',
-            'like' => $comments,
+            'results' => 'comments',
+            'comment' => $comments,
             'total' => count($comments)
         ], 200);   
     }

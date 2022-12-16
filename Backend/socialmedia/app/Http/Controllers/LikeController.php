@@ -91,4 +91,35 @@ class LikeController extends Controller
             ], 200);
         }
     }
+    function getLikes($image_id){
+        //Check if post exist
+        $image = Image::find($image_id);
+        if(!$image){
+            return response()->json([
+                "status" => "error",
+                "results" => "Post does not exist"
+            ], 404);
+        }
+        // Get username of likes
+        $likes = DB::table('users')
+            ->join('likes', 'users.id', '=', 'likes.user_id')
+            ->where('likes.image_id', '=', $image_id)
+            ->select('users.username')
+            ->get();
+
+        if(count($likes) == 0){
+            return response()->json([
+                'status' => 'failure',
+                'results' => 'No likes',
+                'total' => 0
+            ]);
+        }
+        return response()->json([
+            'status' => 'success',
+            'results' => 'Likes',
+            'like' => $likes,
+            'total' => count($likes)
+        ], 200);   
+    }
+
 }
