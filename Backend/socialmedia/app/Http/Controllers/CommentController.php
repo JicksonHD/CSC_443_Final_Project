@@ -75,7 +75,7 @@ class CommentController extends Controller
     }
     function getComments($image_id){
         //Check if post exist
-        $image = Post::find($image_id);
+        $image = Image::find($image_id);
         if(!$image){
             return response()->json([
                 "status" => "error",
