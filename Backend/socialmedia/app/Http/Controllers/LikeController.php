@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Post;
+use App\Models\Images;
 use App\Models\User;
-use App\Models\Like;
+use App\Models\Likes;
 use Validator;
 
 class LikeController extends Controller
 {
     function addLike(Request $request){
         $validate = Validator::make($request->all(), [
-            'image_id' => 'required|integer'
+            'image_id' => 'required|integer',
+            'user_id' => 'required|integer'
         ]);
         if($validate->fails()){
             return response()->json([
@@ -22,11 +23,11 @@ class LikeController extends Controller
                 "results" => "Some fields are empty"
             ], 400);
         }
-        $user = Auth::user();
-        $user_id = $user->id;
+        
+        $user_id = $request->user_id;
         //Check if user and post exists
         $user = User::find($user_id);
-        $image = Image::find($request->image_id);
+        $image = Images::find($request->image_id);
         if(!$user){
             return response()->json([
                 "status" => "error",
@@ -40,7 +41,7 @@ class LikeController extends Controller
             ], 401);
         }
         //Check if user already like this post
-        $like = Like::where("image_id",$request->image_id)
+        $like = Likes::where("image_id",$request->image_id)
                     ->where("user_id",$user_id)
                     ->get();
         if(count($like) > 0){
@@ -50,7 +51,7 @@ class LikeController extends Controller
             ], 401);
         }
         // Adding new like
-        $like = new Like;
+        $like = new Likes;
         $like->user_id = $user_id;
         $like->image_id = $request->image_id;
         if($like->save()){
@@ -62,7 +63,8 @@ class LikeController extends Controller
     }
     function deleteLike(Request $request){
         $validate = Validator::make($request->all(), [
-            'image_id' => 'required|integer'
+            'image_id' => 'required|integer',
+            'user_id' => 'required|integer'
         ]);
         if($validate->fails()){
             return response()->json([
@@ -70,10 +72,10 @@ class LikeController extends Controller
                 "results" => "Some fields are empty"
             ], 400);
         }
-        $user = Auth::user();
-        $user_id = $user->id;
+        
+        $user_id = $request->user_id;
         //Check if like exist
-        $like = Like::where("image_id",$request->image_id)
+        $like = Likes::where("image_id",$request->image_id)
                     ->where("user_id",$user_id)
                     ->get();
         if(count($like) == 0){
@@ -93,7 +95,7 @@ class LikeController extends Controller
     }
     function getLikes($image_id){
         //Check if post exist
-        $image = Image::find($image_id);
+        $image = Images::find($image_id);
         if(!$image){
             return response()->json([
                 "status" => "error",
@@ -104,7 +106,7 @@ class LikeController extends Controller
         $likes = DB::table('users')
             ->join('likes', 'users.id', '=', 'likes.user_id')
             ->where('likes.image_id', '=', $image_id)
-            ->select('users.username')
+            ->select('users.first_name','users.last_name')
             ->get();
 
         if(count($likes) == 0){
@@ -117,9 +119,26 @@ class LikeController extends Controller
         return response()->json([
             'status' => 'success',
             'results' => 'Likes',
-            'like' => $likes,
+            'likes' => $likes,
             'total' => count($likes)
         ], 200);   
+    }
+    function checkLike($image_id,$user_id){
+    
+        //check if like exist
+        $like = Likes::where('user_id', $user_id)
+                    ->where('image_id',$image_id)
+                    ->get();
+        if(count($like) == 0){
+            return response()->json([
+                'status' => 'success',
+                'results' => 'false'
+            ], 200);
+        }
+        return response()->json([
+            'status' => 'success',
+            'results' => 'true'
+        ], 200);
     }
 
 }

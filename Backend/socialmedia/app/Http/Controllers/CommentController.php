@@ -87,7 +87,7 @@ class CommentController extends Controller
         $comments = DB::table('users')
             ->join('comments', 'users.id', '=', 'comments.user_id')
             ->where('comments.image_id', '=', $image_id)
-            ->select('users.first_name', 'comments.content')
+            ->select('users.first_name', 'users.last_name','comments.content')
             ->get();
 
         if(count($comments) == 0){
