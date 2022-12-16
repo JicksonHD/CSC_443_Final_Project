@@ -109,6 +109,13 @@
     justify-content: space-evenly;
 }
 
+.addPhoto_Features_placement{
+
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
 .logo_placement{
 
   margin-left: 45%;
