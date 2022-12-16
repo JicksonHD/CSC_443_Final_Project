@@ -60,4 +60,35 @@ class LikeController extends Controller
             ], 200);
         }
     }
+    function deleteLike(Request $request){
+        $validate = Validator::make($request->all(), [
+            'image_id' => 'required|integer'
+        ]);
+        if($validate->fails()){
+            return response()->json([
+                "status" => "error",
+                "results" => "Some fields are empty"
+            ], 400);
+        }
+        $user = Auth::user();
+        $user_id = $user->id;
+        //Check if like exist
+        $like = Like::where("image_id",$request->image_id)
+                    ->where("user_id",$user_id)
+                    ->get();
+        if(count($like) == 0){
+            return response()->json([
+                "status" => "error",
+                "results" => "Like does not exist"
+            ], 404);
+        }
+        //Delete like
+        if($like[0]->delete()){
+            return response()->json([
+                'status' => 'success',
+                'results' => 'Like Deleted',
+                'like' => $like
+            ], 200);
+        }
+    }
 }
