@@ -103,4 +103,17 @@ class ImageController extends Controller
             };
         }
     }
+    function getPosts(){
+        $images = Image::all();
+        if(count($images) == 0){
+            return response()->json([
+                "status" => "success",
+                "results" => "No Posts yet"
+            ], 200);
+        }
+        return response()->json([
+            "status" => "success",
+            "results" => $images
+        ], 200);
+    }
 }
