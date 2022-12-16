@@ -116,33 +116,21 @@ class ImageController extends Controller
             "results" => $images
         ], 200);
     }
-    function getPostsUser($user_id){
+    function getImagesUser($user_id){
     
-        $image = Image::find($user_id);
+        $image = Images::where("user_id", $user_id)
+                        ->get();
         if(!$image){
             return response()->json([
                 "status" => "error",
-                "results" => "Post does not exist"
+                "results" => "Image does not exist"
             ], 404);
         }
-        //Getting username with content of each comment
-        $images = DB::table('users')
-            ->join('images', 'users.id', '=', 'comments.user_id')
-            ->where('images.image_id', '=', $user_id)
-            ->select('users.username', 'images.image')
-            ->get();
 
-        if(count($images) == 0){
-            return response()->json([
-                'status' => 'failure',
-                'results' => 'No posts yet',
-                'total' => 0
-            ]);
-        }
         return response()->json([
             'status' => 'success',
             'results' => 'images',
-            'comment' => $images,
+            'images' => $image,
         ], 200);   
 
     }
