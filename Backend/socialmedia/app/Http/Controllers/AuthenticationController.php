@@ -45,7 +45,8 @@ class AuthenticationController extends Controller
 
     function register(Request $request){
         $validate_username = Validator::make($request->all(), [
-            'username' => 'required|string|alpha_dash|max:255',
+            'first_name' => 'required|string|alpha_dash|max:255',
+            'last_name' => 'required|string|alpha_dash|max:255'
         ]);
         if($validate_username->fails()){
             return response()->json([
@@ -54,7 +55,8 @@ class AuthenticationController extends Controller
             ]);
         }
         $validate_username_exist = Validator::make($request->all(), [
-            'username' => 'required|string|alpha_dash|max:255|unique:users',
+            'first_name' => 'required|string|alpha_dash|max:255|unique:users',
+            'last_name' => 'required|string|alpha_dash|max:255'
         ]);
         if($validate_username_exist->fails()){
             return response()->json([
@@ -90,7 +92,8 @@ class AuthenticationController extends Controller
             ]);
         }
         $user = new User;
-        $user->username = $request->username;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
 
