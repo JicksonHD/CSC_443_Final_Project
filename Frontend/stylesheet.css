@@ -283,7 +283,9 @@ transition: all .2s ease;
  margin-left: 2%;
 }
 
-.username-placement{
-
-  justify-content: left;
+.user-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
