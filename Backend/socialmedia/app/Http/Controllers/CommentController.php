@@ -73,4 +73,34 @@ class CommentController extends Controller
             ], 200);
         }
     }
+    function getComments($image_id){
+        //Check if post exist
+        $image = Post::find($image_id);
+        if(!$image){
+            return response()->json([
+                "status" => "error",
+                "results" => "Post does not exist"
+            ], 404);
+        }
+        //Getting username with content of each like
+        $comments = DB::table('users')
+            ->join('comments', 'users.id', '=', 'comments.user_id')
+            ->where('comments.image_id', '=', $image_id)
+            ->select('users.username', 'comments.comment')
+            ->get();
+
+        if(count($comments) == 0){
+            return response()->json([
+                'status' => 'failure',
+                'results' => 'No Comments',
+                'total' => 0
+            ]);
+        }
+        return response()->json([
+            'status' => 'success',
+            'results' => 'Likes',
+            'like' => $comments,
+            'total' => count($comments)
+        ], 200);   
+    }
 }
