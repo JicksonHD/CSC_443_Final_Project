@@ -289,9 +289,52 @@ transition: all .2s ease;
   justify-content: center;
   align-items: center;
   margin: 5px;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 }
 
 .img {
   width: 100%;
 }
+
+
+
+.stream-features-placement{
+
+  flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+  
+  body {
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu,
+      Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: #fafafa;
+  }
+  
+  .navbar .container {
+  /* background-color: #555; */
+  padding: 15px 0;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin: 0 auto; */
+  }
+
+  .heart-img {
+    display: flex;
+    margin: 10px;
+    align-items: flex-start;
+    padding-left: 20px;
+  }
+  .comment-img {
+    display: flex;
+    margin: 8px;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
+
