@@ -21,7 +21,7 @@ I've been asked to implement in this project a social media website where the us
 <li>Backend(php)</li>
 </ul>
  
-#Screen Shots
+# Screen Shots
 -Home Page
 ![home](https://user-images.githubusercontent.com/98699087/208269380-2f5dab93-fd27-488c-a9ef-96aaf05bf2b6.png)
 
