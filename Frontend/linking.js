@@ -11,3 +11,7 @@ pages.Console = (title, values, oneValue = true) => {
     }
     console.log("--/" + title + "---");
   };
+
+  pages.loadFor = (page) => {
+    eval("pages.load_" + page + "();");
+  };
