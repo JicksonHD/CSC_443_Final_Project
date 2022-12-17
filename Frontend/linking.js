@@ -37,3 +37,43 @@ pages.Console = (title, values, oneValue = true) => {
   pages.Console("Error from Linking (GET)", error);
     }
   };
+
+  pages.load_login = () => {
+    const login_btn = document.getElementById("login");
+  const result = document.getElementById("response");
+
+  const responseHandler = () => {
+    result.innerHTML = '<div id = "response" class = "response_font"></div>';
+  };
+
+  const login = async () => {
+    const login_url = base_url + "login.php";
+
+    const login_data = new URLSearchParams();
+    login_data.append("email", document.getElementById("email_login").value);
+    login_data.append("password", document.getElementById("password_login").value);
+
+    const response = await pages.postAPI(login_url, login_data);
+    if (response.data.error) {
+      result.innerHTML =
+        '<div id = "response" class = "response_font">' +
+        response.data.error +
+        "</div>";
+      setTimeout(responseHandler, 2000);
+    } else {
+      // Saving user data in the local storage
+      const userData = [];
+      const user_id = response.data.success.user_id;
+      const first_name = response.data.success.first_name;
+      const last_name = response.data.success.last_name;
+      const email = response.data.success.email;
+
+      userData.push({ user_id, first_name, last_name, email });
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      // Switching to the stream page
+      window.location.href = "stream.html";
+    }
+  };
+  login_btn.addEventListener("click", login);
+};
