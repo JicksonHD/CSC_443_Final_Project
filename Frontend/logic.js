@@ -1,5 +1,5 @@
 const moon = document.getElementById("moon");
-let heart = document.querySelector('img');
+let heart = document.getElementById("heart");
 
 moon.onclick = function(){
     document.body.classList.toggle("dark-theme");
@@ -12,10 +12,10 @@ moon.onclick = function(){
 
 heart.onclick = function(){
     console.log("I entered");
-    let mySrc = heart.getAttribute('src');
-    if(mySrc === "./empty_heart.png"){
-        heart.setAttribute('src',"./full_heart.png");
+
+    if(heart.src.match("./empty_heart.png")){
+        heart.src = "./full_heart.png";
     } else{
-        heart.setAttribute('src',"./empty_heart.png");
+        heart.src = "./empty_heart.png";
     }  
 }
