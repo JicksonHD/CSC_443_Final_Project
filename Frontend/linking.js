@@ -1,4 +1,5 @@
 const pages = {};
+const base_url ="";
 
 pages.Console = (title, values, oneValue = true) => {
     console.log("---" + title + "---");

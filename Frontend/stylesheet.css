@@ -340,3 +340,6 @@ transition: all .2s ease;
     margin-bottom: 20%;
   }
 
+.response_font{
+  color: red;
+}
