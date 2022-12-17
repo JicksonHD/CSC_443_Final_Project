@@ -1,5 +1,5 @@
 const pages = {};
-const base_url ="";
+const base_url ="http://127.0.0.1:8000";
 
 pages.Console = (title, values, oneValue = true) => {
     console.log("---" + title + "---");
