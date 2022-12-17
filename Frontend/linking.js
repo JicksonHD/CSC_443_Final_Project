@@ -16,3 +16,11 @@ pages.Console = (title, values, oneValue = true) => {
   pages.loadFor = (page) => {
     eval("pages.load_" + page + "();");
   };
+
+  pages.getAPI = async (api_url) => {
+    try {
+      return await axios(api_url);
+    } catch (error) {
+  pages.Console("Error from Linking (GET)", error);
+    }
+  };
