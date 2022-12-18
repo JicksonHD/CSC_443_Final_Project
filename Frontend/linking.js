@@ -131,7 +131,7 @@ pages.load_editProfile = () =>{
       const profile_data = new URLSearchParams();
       profile_data.append("first_name", document.getElementById("first_name").value);
       profile_data.append("last_name", document.getElementById("last_name").value);
-      profile_data.append("email", document.getElementById("email").value);
+      profile_data.append("password", document.getElementById("password").value);
   
       const response = await pages.postAPI(
         profile_url,
