@@ -11,7 +11,7 @@ moon.onclick = function(){
 }
 
 heart.onclick = function(){
-    console.log("I entered");
+
 
     if(heart.src.match("./empty_heart.png")){
         heart.src = "./full_heart.png";
