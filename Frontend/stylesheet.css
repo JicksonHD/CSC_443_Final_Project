@@ -343,3 +343,52 @@ transition: all .2s ease;
 .response_font{
   color: red;
 }
+
+.comment-card {
+  display: none;
+  flex-direction: column;
+  height: 300px;
+  width: 400px;
+  box-shadow: 0 0 3px 0;
+  background: inherit;
+  backdrop-filter: blur(20px);
+  margin: 100px;
+  border-radius: 25px;
+}
+.comment-header {
+  color: black;
+  margin: 10px;
+}
+.comment-area {
+  background-color: transparent;
+  color: black;
+  margin: 10px;
+}
+.comment-area:focus {
+  outline: none;
+}
+
+.add-btn {
+  background-color: transparent;
+  margin: auto;
+  border-radius: 25px;
+  border-color: black;
+  height: 30px;
+  width: 100px;
+  text-decoration: none;
+  color: black;
+}
+.x-icon {
+  margin: 10px;
+  padding-left: 240px;
+}
+
+.comment-top {
+  position:fixed;
+  z-index: 1;
+  top: 0;
+  left:0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
