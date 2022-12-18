@@ -124,7 +124,7 @@ pages.load_editProfile = () =>{
       result.innerHTML = '<div id = "response" class = "response_font"></div>';
     };
 
-  const profile = async () => {
+  const editProfile = async () => {
 
       const profile_url = base_url + "update_profile.php";
   
@@ -151,5 +151,5 @@ pages.load_editProfile = () =>{
         setTimeout(responseHandler, 2000);
       }
     };
-    save_btn.addEventListener("click", profile);
+    save_btn.addEventListener("click", editProfile);
 };
