@@ -23,16 +23,12 @@ heart.onclick = function(){
     }  
 }
 
-const commentHandler = (c) => {
+comment_icons.onclick = function(){
 
     add_comment.style.display = "flex";
+}
 
-};
-
-const xicon = (x) => {
+remove_comment_box.onclick = function(){
 
     add_comment.style.display = "none";
 }
-
-comment_icons.forEach(b => b.addEventListener("click",commentHandler));
-remove_comment_box.addEventListener("click", xicon);
